@@ -1,0 +1,343 @@
+<!doctype html>
+<htm>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+      
+            <title>Smart Locker System</title>
+            <link rel="icon" type="image/png" href="Smart Locker System Logo.png">
+           
+            
+    <link rel="stylesheet" href="styles.css">
+<!-- Add fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>    
+    <div class="align anek-devanagari" >        
+    
+    <!-- Top Navigation bar START -->
+    <ul class="nav-tabs tbl shadow poppins-thin "  >
+        <li><a href="#home" class="active" onclick="openTab(event, 'home')">Home</a></li> 
+        <li><a href="#services" onclick="openTab(event, 'services')">Services</a></li>
+        <li><a href="#contact" onclick="openTab(event, 'contact')">Contact</a></li>
+        <li><a href="#about" onclick="openTab(event, 'about')">About</a></li>
+    </ul>
+    <!-- Navigation bar END -->
+
+    <!-- HOME tab START -->    
+    <!-- System START -->
+
+    <div id="home" class="tab-content active ">
+        <div id="particles-js"></div>
+
+        <img class="fixed-image " src="SLSw.png" width="150px" >
+        <center>    
+        <img class="mainImage" src="SLS.png" >
+        </center>
+    
+        
+  <!-- left Section: QR Code Display -->
+      <div class="content">
+          <section class="left-section shadow">    
+
+        <div class="availability">
+            <h2>Available Lockers: <span id="randomIndex">10</span></h2>
+            <p id="status"></p>
+        </div>
+        <div class="booking">
+            <button class="sysButton" style="font-size: 15px;" id="bookLockerBtn">Book a Locker</button>
+        </div>
+    <!-- lockers -->
+        <div class="booking">
+          
+
+        <div class="containerA">
+          <table>
+            <tr>
+              <td><button id="bookLockerBtn1" class="available lockerButton"></button></td>
+              <td><button id="bookLockerBtn2" class="unavailable lockerButton"></button></td>
+              <td><button id="bookLockerBtn3" class="available lockerButton"></button></td>
+            </tr>
+            <tr>
+              <td><button id="bookLockerBtn4" class="unavailable lockerButton"></button></td>
+              <td><button id="bookLockerBtn5" class="available lockerButton"></button></td>
+              <td><button id="bookLockerBtn6" class="available lockerButton"></button></td>
+            </tr>
+            <tr>
+              <td><button id="bookLockerBtn7" class="unavailable lockerButton"></button></td>
+              <td><button id="bookLockerBtn8" class="available lockerButton"></button></td>
+              <td><button id="bookLockerBtn9" class="unavailable lockerButton"></button></td>
+            </tr>
+          </table>
+        </div>
+    </div>
+        </section>
+
+          <!-- Right Section: QR Code Display -->
+          <section class="right-section shadow">
+              <h3>Here is Your QR Code:</h3>
+              <div id="qrCodeContainer" class="qr-container">
+                  <canvas id="qrCode"></canvas>
+              </div>
+              <a id="downloadLink" download="QRCode.jpg" class="download-btn">Download QR Code</a>
+              <div id="passwordContainer" class="hidden">
+                  <h4>Your Password: <span id="generatedPassword"></span></h4>
+              </div>
+              <div id="countdown" class="hidden">
+                  <h3>Time Remaining: <span id="timer">30:00</span></h3>
+              </div>
+          </section>
+      </div>
+        
+ <!-- System END -->
+
+    <pre>
+        
+
+
+
+
+
+
+
+
+
+
+
+    </pre>
+         
+    <table id="P1" width="100%" border="0px">
+      <tbody>
+        <tr>
+            <td><center><img class="shadow" src="12.jfif" width="400px" style="border-radius: 15px;"></center> </td>
+            <td class="shadow2"  style=" padding: 70px; background-color: rgb(19, 73, 109); border-radius: 30px; "><h2 style="color:#00719C; ">What is locker</h2>
+                <p style=" align-content: center; text-align: justify; color: rgb(255, 255, 255); ">A locker is a small, lockable storage compartment used to store personal belongings securely. Lockers are commonly found in public spaces like schools, gyms, workplaces, libraries, and shopping malls.<br><br>
+
+                    In a smart locker booking system, the lockers are enhanced with digital and automated technologies. Here's a brief overview of how such a system works:<br><br>
+                    
+                    <b>1.User Authentication:</b> Users can book and access lockers via a web or mobile application using QR codes, key cards.<br><br>
+                    
+                    <b>2.Online Booking:</b> Users can reserve a locker slot in advance through the web app. They select a time, locker size, and location as per availability.<br><br>
+                    
+                    <b>3.Automated Locker Management:</b> Once a booking is made, the system automatically assigns a QR code to the user. <br><br>
+                    
+                    <b>4.Contactless Access:</b> To unlock a locker, users typically scan their QR code or swipe their key card at the locker terminal, making the system more secure and hygienic.<br><br>
+
+                    This system simplifies the process of managing physical lockers, offering convenience for users and administrators alike.</p></td>
+        </tr>
+        <tr style="height: 50px;"></tr>
+        <tr>
+          <td class="shadow2" style=" padding: 70px; background-color:  rgb(19, 73, 109); border-radius: 30px; width: 50%; "><h2 style="color:#00719C; ">Different of us</h2>
+                <p style=" align-content: center; text-align: justify;color: rgb(255, 255, 255);">A normal locker is a traditional storage compartment that is typically accessed with a physical key or a combination lock. Users must manually unlock and lock the compartment, and there’s no way to manage the lockers digitally. These lockers are often less secure, as keys can be lost or stolen, and managing multiple lockers in a public space can become cumbersome for administrators.<br>
+
+On the other hand, a smart locker is equipped with digital technology that allows users to access it via QR codes, key cards, or even mobile apps. Smart lockers can be integrated with an online booking system, enabling users to reserve lockers remotely. They provide contactless access, real-time monitoring, and automated management, offering increased security and convenience for both users and administrators. Additionally, smart lockers can send notifications and reminders, reducing manual oversight and improving overall efficiency.</p></td>
+          <td><img class="shadow" src="Lock.jpg"width="400" style="padding-left: 100px; border-radius: 15px;"></td>
+        </tr>
+      </tbody>
+    </table>
+    <pre>
+
+
+
+
+
+    </pre>
+
+    
+      <div id="P1" style="padding-left: 150px;">
+        <hr>
+      <h2 style="color:#00719C;">Vision</h2>
+        <p style="width: 80%; align-content: center; text-align: justify;color: white; ">Our vision is to revolutionize the way people access and utilize storage solutions by providing a secure, efficient, and user-friendly smart locker system. We aim to empower users with seamless QR code access and advanced reservation capabilities, ensuring that they can effortlessly store and retrieve their belongings anytime and anywhere. By leveraging innovative technology and prioritizing customer convenience, we strive to enhance the outdoor storage experience and redefine accessibility in urban environments.</p>
+      </div>
+    
+    
+        <div id="P2" style="padding-left: 150px;">
+            <hr>
+            <h2 style="color:#00719C;">Mission</h2>
+
+              <p style="width: 80%; align-content: center; text-align: justify; color: white;">Our mission is to provide a reliable and convenient smart locker solution that meets the diverse storage needs of our users. We are committed to ensuring the highest standards of security and automation, allowing customers to easily access, reserve, and manage their storage space. By continuously improving our technology and user experience, we strive to enhance the way people interact with storage facilities, making it efficient, accessible, and hassle-free.</p>
+              <hr><br><br><br>
+        </div>
+       
+        <a href="#" onclick="openTab(event, 'contact')"><img src="Contact.png" width="50px" height="50px" style="position: fixed; bottom: 15px; right: 15px; z-index: 1000; " ></a>
+
+    </div>
+    <!--  HOME tab END -->
+    <!-- SERVICES tab START -->
+
+
+    <div id="services" class="tab-content " style="padding-top: 100px; padding-bottom: 250px; padding-left: 130px;">
+        <center>
+            
+            <table border="0" width="60%" >
+              <tr>
+                  <td colspan="2" ><h3 class="bordered-text">Services</h3></td>
+              </tr>
+              
+              <tr>
+                <td><p>In a smart locker booking system, the lockers are enhanced with digital and automated technologies. Here's a brief overview of how such a system works:<br><br>
+                    
+                  <b>1.User Authentication:</b> Users can book and access lockers via a web or mobile application using QR codes, key cards.<br><br>
+                  
+                  <b>2.Online Booking:</b> Users can reserve a locker slot in advance through the web app. They select a time, locker size, and location as per availability.<br><br>
+                  
+                  <b>3.Automated Locker Management:</b> Once a booking is made, the system automatically assigns a QR code to the user. <br><br>
+                  
+                  <b>4.Contactless Access:</b> To unlock a locker, users typically scan their QR code or swipe their key card at the locker terminal, making the system more secure and hygienic.<br><br>
+
+                  This system simplifies the process of managing physical lockers, offering convenience for users and administrators alike.</p></td>
+              </tr>
+              
+            </table>
+      </center>
+    </div>
+
+    <!-- SERVICES tab END -->
+    <!-- CONTACT tab START -->
+
+
+
+    <div id="contact" class="tab-content" style="padding-top: 250px; padding-bottom: 250px; padding-left: 130px;">
+        <center>
+            <table border="0" width="60%" >
+              <tr>
+                  <td colspan="2" ><h3 class="bordered-text">Contact Us</h3></td>
+              </tr>
+              <tr style="height: 20px;"></tr>
+              <tr>
+                  <td width="50px"><img src="location.png" width="30px"></td>
+                  <td>Faculty of Computing and Technology,
+                            Bulugaha Junction, 
+                            Kelaniya,
+                            Sri Lanka.</td>
+              </tr>
+              <tr>
+                  <td><p><img src="call.png" width="30px"></p></td>
+                  <td>+94 785 800 808 <br> +94 766 365 063 </td>
+              </tr>
+              <tr>
+                <td><img src="email.png" width="30px"> </td>
+                <td>smartlockersystem15@gamil.com</td>
+              </tr>
+            </table>
+      </center>
+
+    </div>
+
+    <!-- CONTACT tab END -->
+    <!-- ABOUT tab START -->
+
+
+    <div id="about" class="tab-content "style="padding-top: 250px; padding-bottom: 250px; padding-left: 130px;">
+       
+        <center>
+            <table border="0" width="60%">
+              <tr>
+                  <td colspan="2" ><h3 class="bordered-text">About Us</h3></td>
+              </tr>
+              <tr style="height: 20px;"></tr>
+              <tr>
+                  <td>Introducing our innovative Smart Locker System designed for the secure storage of your valuables in public spaces. Our state-of-the-art system provides a convenient and reliable solution for safeguarding your belongings. With the added feature of online locker booking, you can easily reserve a locker in advance, ensuring peace of mind wherever you go. Protect your valuable items while saving time, effort, and money with our efficient and user-friendly smart lockers. Trust us to keep your possessions safe and accessible when you need them.</td>
+              </tr>
+            </table>
+      </center>
+
+    </div>
+
+    <!-- ABOUT tab END -->
+
+</div>
+
+
+
+
+
+    <div style="color: white;">
+  <table id="about" class="anek-devanagari" width="100%" border="0" style="background-color: rgba(38, 40, 43, 1);">
+      <tbody>
+        <tr>
+          <td width="70px"></td>
+          <td width="400px"> 
+            <img src="SLSw.png" width="300px">
+            
+            <blockquote>
+              <p><b>Save your values, time, effort, money. Contact us</b><br><br>
+
+                Keep your valuables safe in public places in your busy life, save your valuable time, effort and money, contact us.</p>
+          </blockquote>          
+      </td>
+      <td width="500px">
+          <table border="0">
+              <tr>
+                  <td colspan="2" ><h3 class="bordered-text">Contact Us</h3></td>
+              </tr>
+              <tr>
+                  <td width="50px"><img src="location.png" width="30px"></td>
+                  <td>Faculty of Computing and Technology,
+                            Bulugaha Junction, 
+                            Kelaniya,
+                            Sri Lanka.</td>
+              </tr>
+              <tr>
+                  <td><p><img src="call.png" width="30px"></p></td>
+                  <td>+94 785 800 808 <br> +94 766 365 063 </td>
+              </tr>
+              <tr>
+                <td><img src="email.png" width="30px"> </td>
+                <td>smartlockersystem15@gamil.com</td>
+              </tr>
+          </table>
+      </td>
+      <td width="200"><h3 class="bordered-text">Popular Link</h3>
+            <ul style="list-style: none;">
+                <li><a class="custom-link" href="#servises" onclick="openTab(event, 'servises')">Servises</a></li>
+                <li><a class="custom-link" href="#contact" onclick="openTab(event, 'contact')">Contact Us</a></li>
+                <li><a class="custom-link" href="#about" onclick="openTab(event, 'about')"> about us</a></li>
+            </ul>          </td>
+      <td >
+        <table style="width: 200px;">
+            <div class="telegram-form">
+            <tr >
+                <td colspan="2">
+                    <h3 class="bordered-text">Send a massage</h3>
+                </td>
+            </tr>
+            <tr><td colspan="2">Stay connect with us</td></tr>
+            <tr><td>
+                <textarea id="message" placeholder="Message..."></textarea></td>
+            <td><img src="Telegrami.png" alt="Send" class="send-image" id="sendButton"></td></tr>
+        </table>
+      </td>
+
+        </tr>
+        <tr>
+          <td colspan="8" align="center" valign="middle"><pre>© 2024 Smart Locker System All rights reserved.</pre></td>
+        </tr>
+    </div>
+      </tbody>
+  </table>
+  </div>
+
+  <!-- QR code Genarator script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<!-- <script src="script.js"></script> -->
+ 
+<!-- nav tab funtion -->
+  <script src="Navigation bar funtion.js"></script>
+<!-- script part of Animated background  -->
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="background.js"></script>
+<!-- <script src="DataBase.js" type="module"></script> -->
+
+<script type="module" src="script.js"></script>
+<!-- <script src="DataBase.js" type="module"></script>  -->
+
+</body>
+
+
+</html>
